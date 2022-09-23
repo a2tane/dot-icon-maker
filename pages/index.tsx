@@ -1,6 +1,6 @@
-import { Card } from "@mui/material";
 import { Container, Stack } from "@mui/system";
 import type { NextPage } from "next";
+import { Contents } from "../components/Contents";
 import { MyAppBar } from "../components/MyAppBar";
 
 const Spacer = () => {
@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       <Spacer></Spacer>
       <Container>
         <Stack spacing={"5px"}>
-          <Card>HOGE</Card>
+          <Contents></Contents>
         </Stack>
       </Container>
     </div>
