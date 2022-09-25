@@ -1,41 +1,15 @@
 import { Stack } from "@mui/system";
-import { useEffect, useState } from "react";
-import { Size } from "../../util";
+import { Canvas } from "../../util";
 import { ColorCell } from "../ColorCell";
 
 type CanvasAreaProps = {
   selectedColor: string;
-  canvasSize: Size;
-};
-
-interface CanvasCell {
-  color?: string;
-}
-
-interface Canvas {
-  cells: CanvasCell[][];
-}
-
-const initCanvas = (x: number, y: number): Canvas => {
-  let canvas = [];
-  for (let index_y = 0; index_y < y; index_y++) {
-    let canvasRow = [];
-    for (let index_x = 0; index_x < x; index_x++) {
-      canvasRow.push({ color: "#FFFFFF" });
-    }
-    canvas.push(canvasRow);
-  }
-  return { cells: canvas };
+  canvas: Canvas;
+  setCanvas: Function;
 };
 
 export const CanvasArea = (props: CanvasAreaProps) => {
-  const { selectedColor, canvasSize } = props;
-
-  const [canvas, setCanvas] = useState(initCanvas(canvasSize.x, canvasSize.y));
-
-  useEffect(() => {
-    setCanvas(initCanvas(canvasSize.x, canvasSize.y));
-  }, [canvasSize]);
+  const { selectedColor, canvas, setCanvas } = props;
 
   const changeColor = (x: number, y: number) => {
     return () => {
