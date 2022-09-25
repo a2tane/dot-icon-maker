@@ -43,9 +43,9 @@ export const CanvasArea = (props: CanvasAreaProps) => {
   const cells = [];
 
   for (let index_y = 0; index_y < y; index_y++) {
-    let list = [];
+    let row = [];
     for (let index_x = 0; index_x < x; index_x++) {
-      list.push(
+      row.push(
         <ColorCell
           key={`${index_x}-${index_y}`}
           callback={changeColor(index_x, index_y)}
@@ -55,7 +55,7 @@ export const CanvasArea = (props: CanvasAreaProps) => {
     }
     cells.push(
       <Stack key={index_y} direction={"row"}>
-        {list}
+        {row}
       </Stack>
     );
   }
