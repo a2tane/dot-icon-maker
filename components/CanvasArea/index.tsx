@@ -1,15 +1,15 @@
 import { Stack } from "@mui/system";
 import { useState } from "react";
+import { Size } from "../../util";
 import { ColorCell } from "../ColorCell";
 
 type CanvasAreaProps = {
   selectedColor: string;
-  x: number;
-  y: number;
+  canvasSize: Size;
 };
 
 interface CanvasCell {
-  color: string;
+  color?: string;
 }
 
 interface Canvas {
@@ -29,27 +29,27 @@ const initCanvas = (x: number, y: number): Canvas => {
 };
 
 export const CanvasArea = (props: CanvasAreaProps) => {
-  const { selectedColor, x, y } = props;
+  const { selectedColor, canvasSize } = props;
 
-  const [canvas, setCanvas] = useState(initCanvas(x, y));
+  const [canvas, setCanvas] = useState(initCanvas(canvasSize.x, canvasSize.y));
 
   const changeColor = (x: number, y: number) => {
     return () => {
-      canvas.cells[x][y] = { color: selectedColor };
+      canvas.cells[y][x] = { color: selectedColor };
       setCanvas({ ...canvas });
     };
   };
 
-  const cells = [];
+  let cells = [];
 
-  for (let index_y = 0; index_y < y; index_y++) {
+  for (let index_y = 0; index_y < canvasSize.y; index_y++) {
     let row = [];
-    for (let index_x = 0; index_x < x; index_x++) {
+    for (let index_x = 0; index_x < canvasSize.x; index_x++) {
       row.push(
         <ColorCell
           key={`${index_x}-${index_y}`}
           callback={changeColor(index_x, index_y)}
-          color={canvas.cells[index_x][index_y].color}
+          color={canvas.cells[index_y][index_x].color || "#FFFFFF"}
         ></ColorCell>
       );
     }
@@ -69,6 +69,8 @@ export const CanvasArea = (props: CanvasAreaProps) => {
 
 CanvasArea.defaultProps = {
   selectedColor: "#008080",
-  x: 3,
-  y: 3,
+  canvasSize: {
+    x: 5,
+    y: 5,
+  },
 };
