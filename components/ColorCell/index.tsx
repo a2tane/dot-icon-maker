@@ -2,12 +2,25 @@ import { Box } from "@mui/material";
 
 type ColorCellProps = {
   color: string;
+  callback: Function;
 };
 export const ColorCell = (props: ColorCellProps) => {
-  const { color } = props;
-  return <Box sx={{ border: 1, bgcolor: color, height: 30, width: 30 }}></Box>;
+  const { color, callback } = props;
+  const onClick = () => {
+    callback();
+  };
+
+  return (
+    <Box
+      sx={{ border: 1, bgcolor: color, height: 45, width: 45 }}
+      onClick={onClick}
+    ></Box>
+  );
 };
 
 ColorCell.defaultProps = {
   color: "#fafad2",
+  callback: () => {
+    console.log("click");
+  },
 };

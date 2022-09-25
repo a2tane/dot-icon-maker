@@ -7,7 +7,7 @@ export const PaletteArea = () => {
   const palette = ["#f0f8ff", "#008080", "#fafad2"];
   const paletteElements = [];
   for (let index = 0; index < palette.length; index++) {
-    paletteElements.push(<ColorCell color="#fafad2"></ColorCell>);
+    paletteElements.push(<ColorCell key={index} color="#fafad2"></ColorCell>);
   }
   return (
     <Stack direction={"row"} alignItems={"center"}>
