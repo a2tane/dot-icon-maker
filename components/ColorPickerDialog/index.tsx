@@ -8,8 +8,14 @@ import {
 import { MuiColorInput } from "mui-color-input";
 import { useState } from "react";
 
-export const ColorPickerDialog = () => {
-  const [isOpen, setIsOpen] = useState(true);
+type ColorPickerDialogProps = {
+  open: boolean;
+  onClose: Function;
+  addColor: Function;
+};
+
+export const ColorPickerDialog = (props: ColorPickerDialogProps) => {
+  const { open, onClose, addColor } = props;
   const [color, setColor] = useState("#ffffff");
 
   const handleChange = (color: string) => {
@@ -17,7 +23,7 @@ export const ColorPickerDialog = () => {
   };
 
   return (
-    <Dialog open={isOpen}>
+    <Dialog open={open}>
       <DialogTitle>色を追加する</DialogTitle>
       <DialogContent>
         <MuiColorInput value={color} onChange={handleChange} />
@@ -26,13 +32,31 @@ export const ColorPickerDialog = () => {
         <Button
           variant="outlined"
           onClick={() => {
-            setIsOpen(false);
+            onClose();
           }}
         >
           キャンセル
         </Button>
-        <Button variant="contained">追加する</Button>
+        <Button
+          variant="contained"
+          onClick={() => {
+            addColor(color);
+            onClose();
+          }}
+        >
+          追加する
+        </Button>
       </DialogActions>
     </Dialog>
   );
+};
+
+ColorPickerDialog.defaultProps = {
+  open: true,
+  onClose: () => {
+    console.log("close");
+  },
+  addColor: () => {
+    console.log("add");
+  },
 };
