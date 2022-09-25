@@ -1,5 +1,5 @@
 import { Stack } from "@mui/system";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Size } from "../../util";
 import { ColorCell } from "../ColorCell";
 
@@ -33,6 +33,10 @@ export const CanvasArea = (props: CanvasAreaProps) => {
 
   const [canvas, setCanvas] = useState(initCanvas(canvasSize.x, canvasSize.y));
 
+  useEffect(() => {
+    setCanvas(initCanvas(canvasSize.x, canvasSize.y));
+  }, [canvasSize]);
+
   const changeColor = (x: number, y: number) => {
     return () => {
       canvas.cells[y][x] = { color: selectedColor };
@@ -41,10 +45,9 @@ export const CanvasArea = (props: CanvasAreaProps) => {
   };
 
   let cells = [];
-
-  for (let index_y = 0; index_y < canvasSize.y; index_y++) {
+  for (let index_y = 0; index_y < canvas.cells.length; index_y++) {
     let row = [];
-    for (let index_x = 0; index_x < canvasSize.x; index_x++) {
+    for (let index_x = 0; index_x < canvas.cells[0].length; index_x++) {
       row.push(
         <ColorCell
           key={`${index_x}-${index_y}`}
