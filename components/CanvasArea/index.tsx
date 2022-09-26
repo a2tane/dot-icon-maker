@@ -28,7 +28,7 @@ export const CanvasArea = (props: CanvasAreaProps) => {
         <ColorCell
           key={`${index_x}-${index_y}`}
           callback={changeColor(index_x, index_y)}
-          color={canvas.cells[index_y][index_x].color || "#FFFFFF"}
+          color={canvas.cells[index_y][index_x].color || "#FFFFFFFF"}
           isDrawing={isDrawing}
         ></ColorCell>
       );
@@ -59,7 +59,7 @@ export const CanvasArea = (props: CanvasAreaProps) => {
 };
 
 CanvasArea.defaultProps = {
-  selectedColor: "#008080",
+  selectedColor: "#FFFFFFFF",
   canvasSize: {
     x: 5,
     y: 5,

@@ -33,7 +33,7 @@ export const ColorCell = (props: ColorCellProps) => {
 };
 
 ColorCell.defaultProps = {
-  color: "#fafad2",
+  color: "#FFFFFFFF",
   callback: () => {
     console.log("click");
   },
