@@ -1,4 +1,3 @@
-import { Card, CardContent } from "@mui/material";
 import { Stack } from "@mui/system";
 import { useEffect, useState } from "react";
 import { Canvas, download, Size } from "../../util";
@@ -35,23 +34,19 @@ export const Contents = () => {
   }, [canvasSize]);
 
   return (
-    <Card>
-      <CardContent>
-        <Stack alignItems={"center"} spacing={"30px"}>
-          <SizeArea changeCanvasSize={changeCanvasSize}></SizeArea>
-          <CanvasArea
-            selectedColor={selectedColor}
-            canvas={canvas}
-            setCanvas={setCanvas}
-          ></CanvasArea>
-          <PaletteArea setSelectedColor={setSelectedColor}></PaletteArea>
-          <ToolsArea
-            download={() => {
-              download(canvas);
-            }}
-          ></ToolsArea>
-        </Stack>
-      </CardContent>
-    </Card>
+    <Stack alignItems={"center"} spacing={"30px"}>
+      <SizeArea changeCanvasSize={changeCanvasSize}></SizeArea>
+      <CanvasArea
+        selectedColor={selectedColor}
+        canvas={canvas}
+        setCanvas={setCanvas}
+      ></CanvasArea>
+      <PaletteArea setSelectedColor={setSelectedColor}></PaletteArea>
+      <ToolsArea
+        download={() => {
+          download(canvas);
+        }}
+      ></ToolsArea>
+    </Stack>
   );
 };

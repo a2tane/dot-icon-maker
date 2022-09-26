@@ -12,7 +12,13 @@ export const ColorCell = (props: ColorCellProps) => {
 
   return (
     <Box
-      sx={{ border: 1, bgcolor: color, height: 45, width: 45 }}
+      sx={{
+        border: 1,
+        borderColor: "#7b7b7d88",
+        bgcolor: color,
+        height: 45,
+        width: 45,
+      }}
       onClick={onClick}
     ></Box>
   );
