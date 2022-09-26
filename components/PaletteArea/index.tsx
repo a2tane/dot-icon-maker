@@ -13,7 +13,11 @@ export const PaletteArea = (props: PaletteAreaProps) => {
   const { setSelectedColor } = props;
   const [open, setOpen] = useState(false);
 
-  const [palette, setPalette] = useState(["#f0f8ff", "#008080", "#fafad2"]);
+  const [palette, setPalette] = useState([
+    "#ff8a8aff",
+    "#ccff8aff",
+    "#8ac7ffff",
+  ]);
   const paletteElements = [];
 
   const changeColor = (index: number) => {

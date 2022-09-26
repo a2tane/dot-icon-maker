@@ -16,7 +16,7 @@ type ColorPickerDialogProps = {
 
 export const ColorPickerDialog = (props: ColorPickerDialogProps) => {
   const { open, onClose, addColor } = props;
-  const [color, setColor] = useState("#ffffff");
+  const [color, setColor] = useState("#f0f0f688");
 
   const handleChange = (color: string) => {
     setColor(color);
@@ -26,7 +26,7 @@ export const ColorPickerDialog = (props: ColorPickerDialogProps) => {
     <Dialog open={open}>
       <DialogTitle>色を追加する</DialogTitle>
       <DialogContent>
-        <MuiColorInput value={color} onChange={handleChange} />
+        <MuiColorInput format="hex8" value={color} onChange={handleChange} />
       </DialogContent>
       <DialogActions>
         <Button

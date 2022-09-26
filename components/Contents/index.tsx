@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@mui/material";
 import { Stack } from "@mui/system";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Canvas, download, Size } from "../../util";
 import { CanvasArea } from "../CanvasArea";
 import { PaletteArea } from "../PaletteArea";
@@ -29,6 +29,10 @@ export const Contents = () => {
   const changeCanvasSize = (size: Size) => {
     setCanvasSize(size);
   };
+
+  useEffect(() => {
+    setCanvas(initCanvas(canvasSize.x, canvasSize.y));
+  }, [canvasSize]);
 
   return (
     <Card>
