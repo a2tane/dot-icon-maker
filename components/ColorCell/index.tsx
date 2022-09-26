@@ -3,11 +3,18 @@ import { Box } from "@mui/material";
 type ColorCellProps = {
   color: string;
   callback: Function;
+  isDrawing: boolean;
 };
 export const ColorCell = (props: ColorCellProps) => {
-  const { color, callback } = props;
-  const onClick = () => {
+  const { color, callback, isDrawing } = props;
+  const onMouseDown = () => {
     callback();
+  };
+
+  const onMouseEnter = () => {
+    if (isDrawing) {
+      callback();
+    }
   };
 
   return (
@@ -19,7 +26,8 @@ export const ColorCell = (props: ColorCellProps) => {
         height: 45,
         width: 45,
       }}
-      onClick={onClick}
+      onMouseDown={onMouseDown}
+      onMouseEnter={onMouseEnter}
     ></Box>
   );
 };
@@ -29,4 +37,5 @@ ColorCell.defaultProps = {
   callback: () => {
     console.log("click");
   },
+  isDrawing: false,
 };

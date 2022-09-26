@@ -1,4 +1,5 @@
 import { Stack } from "@mui/system";
+import { useState } from "react";
 import { Canvas } from "../../util";
 import { ColorCell } from "../ColorCell";
 
@@ -10,6 +11,7 @@ type CanvasAreaProps = {
 
 export const CanvasArea = (props: CanvasAreaProps) => {
   const { selectedColor, canvas, setCanvas } = props;
+  const [isDrawing, setIsDrawing] = useState(false);
 
   const changeColor = (x: number, y: number) => {
     return () => {
@@ -27,11 +29,23 @@ export const CanvasArea = (props: CanvasAreaProps) => {
           key={`${index_x}-${index_y}`}
           callback={changeColor(index_x, index_y)}
           color={canvas.cells[index_y][index_x].color || "#FFFFFF"}
+          isDrawing={isDrawing}
         ></ColorCell>
       );
     }
     cells.push(
-      <Stack key={index_y} direction={"row"}>
+      <Stack
+        onMouseDown={() => {
+          setIsDrawing(true);
+          console.log("down");
+        }}
+        onMouseUp={() => {
+          setIsDrawing(false);
+          console.log("up");
+        }}
+        key={index_y}
+        direction={"row"}
+      >
         {row}
       </Stack>
     );
