@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@mui/material";
 import { Stack } from "@mui/system";
 import { useState } from "react";
-import { Canvas, Size } from "../../util";
+import { Canvas, download, Size } from "../../util";
 import { CanvasArea } from "../CanvasArea";
 import { PaletteArea } from "../PaletteArea";
 import { SizeArea } from "../SizeArea";
@@ -41,7 +41,11 @@ export const Contents = () => {
             setCanvas={setCanvas}
           ></CanvasArea>
           <PaletteArea setSelectedColor={setSelectedColor}></PaletteArea>
-          <ToolsArea></ToolsArea>
+          <ToolsArea
+            download={() => {
+              download(canvas);
+            }}
+          ></ToolsArea>
         </Stack>
       </CardContent>
     </Card>
