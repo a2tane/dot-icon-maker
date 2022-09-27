@@ -25,17 +25,13 @@ export const Contents = () => {
   );
   const [selectedColor, setSelectedColor] = useState("");
 
-  const changeCanvasSize = (size: Size) => {
-    setCanvasSize(size);
-  };
-
   useEffect(() => {
     setCanvas(initCanvas(canvasSize.x, canvasSize.y));
   }, [canvasSize]);
 
   return (
     <Stack alignItems={"center"} spacing={"30px"}>
-      <SizeArea changeCanvasSize={changeCanvasSize}></SizeArea>
+      <SizeArea setCanvasSize={setCanvasSize}></SizeArea>
       <CanvasArea
         selectedColor={selectedColor}
         canvas={canvas}

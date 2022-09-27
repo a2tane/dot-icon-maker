@@ -14,10 +14,8 @@ export const CanvasArea = (props: CanvasAreaProps) => {
   const [isDrawing, setIsDrawing] = useState(false);
 
   const changeColor = (x: number, y: number) => {
-    return () => {
-      canvas.cells[y][x] = { color: selectedColor };
-      setCanvas({ ...canvas });
-    };
+    canvas.cells[y][x] = { color: selectedColor };
+    setCanvas({ ...canvas });
   };
 
   let cells = [];
@@ -27,9 +25,15 @@ export const CanvasArea = (props: CanvasAreaProps) => {
       row.push(
         <ColorCell
           key={`${index_x}-${index_y}`}
-          callback={changeColor(index_x, index_y)}
+          onMouseDown={() => {
+            changeColor(index_x, index_y);
+          }}
+          onMouseEnter={() => {
+            if (isDrawing) {
+              changeColor(index_x, index_y);
+            }
+          }}
           color={canvas.cells[index_y][index_x].color || "#FFFFFFFF"}
-          isDrawing={isDrawing}
         ></ColorCell>
       );
     }

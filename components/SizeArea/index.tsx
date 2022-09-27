@@ -2,21 +2,21 @@ import { Stack, TextField } from "@mui/material";
 import { useState } from "react";
 
 type SizeAreaProps = {
-  changeCanvasSize: Function;
+  setCanvasSize: Function;
 };
 
 export const SizeArea = (props: SizeAreaProps) => {
-  const { changeCanvasSize } = props;
+  const { setCanvasSize } = props;
   const [size, setSize] = useState({ x: 5, y: 5 });
 
-  const changeSize = (type: "X" | "Y", value: number) => {
+  const handleOnChange = (type: "X" | "Y", value: number) => {
     switch (type) {
       case "X":
         setSize({
           ...size,
           x: value,
         });
-        changeCanvasSize({
+        setCanvasSize({
           ...size,
           x: value,
         });
@@ -26,7 +26,7 @@ export const SizeArea = (props: SizeAreaProps) => {
           ...size,
           y: value,
         });
-        changeCanvasSize({
+        setCanvasSize({
           ...size,
           y: value,
         });
@@ -41,14 +41,14 @@ export const SizeArea = (props: SizeAreaProps) => {
         label="X"
         value={size.x}
         onChange={(event) => {
-          changeSize("X", Number(event.target.value));
+          handleOnChange("X", Number(event.target.value));
         }}
       ></TextField>
       <TextField
         label="Y"
         value={size.y}
         onChange={(event) => {
-          changeSize("Y", Number(event.target.value));
+          handleOnChange("Y", Number(event.target.value));
         }}
       ></TextField>
     </Stack>

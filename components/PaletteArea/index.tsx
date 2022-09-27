@@ -41,7 +41,7 @@ export const PaletteArea = (props: PaletteAreaProps) => {
       <ColorCell
         key={index}
         color={palette[index]}
-        callback={changeColor(index)}
+        onMouseDown={changeColor(index)}
       ></ColorCell>
     );
   }

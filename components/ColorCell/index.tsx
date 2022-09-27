@@ -2,19 +2,17 @@ import { Box } from "@mui/material";
 
 type ColorCellProps = {
   color: string;
-  callback: Function;
-  isDrawing: boolean;
+  onMouseDown: Function;
+  onMouseEnter: Function;
 };
 export const ColorCell = (props: ColorCellProps) => {
-  const { color, callback, isDrawing } = props;
-  const onMouseDown = () => {
-    callback();
+  const { color, onMouseDown, onMouseEnter } = props;
+  const handleOnMouseDown = () => {
+    onMouseDown();
   };
 
-  const onMouseEnter = () => {
-    if (isDrawing) {
-      callback();
-    }
+  const handleOnMouseEnter = () => {
+    onMouseEnter();
   };
 
   return (
@@ -26,16 +24,18 @@ export const ColorCell = (props: ColorCellProps) => {
         height: 45,
         width: 45,
       }}
-      onMouseDown={onMouseDown}
-      onMouseEnter={onMouseEnter}
+      onMouseDown={handleOnMouseDown}
+      onMouseEnter={handleOnMouseEnter}
     ></Box>
   );
 };
 
 ColorCell.defaultProps = {
   color: "#FFFFFFFF",
-  callback: () => {
-    console.log("click");
+  onMouseDown: () => {
+    console.log("mouseDown");
   },
-  isDrawing: false,
+  onMouseEnter: () => {
+    console.log("mouseEnter");
+  },
 };
