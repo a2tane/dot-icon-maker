@@ -41,11 +41,9 @@ export const CanvasArea = (props: CanvasAreaProps) => {
       <Stack
         onMouseDown={() => {
           setIsDrawing(true);
-          console.log("down");
         }}
         onMouseUp={() => {
           setIsDrawing(false);
-          console.log("up");
         }}
         key={index_y}
         direction={"row"}
