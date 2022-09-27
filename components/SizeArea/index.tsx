@@ -57,7 +57,7 @@ export const SizeArea = (props: SizeAreaProps) => {
 };
 
 SizeArea.defaultProps = {
-  changeCanvasSize: () => {
-    console.log("change");
+  setCanvasSize: () => {
+    console.log("setCanvasSize");
   },
 };
