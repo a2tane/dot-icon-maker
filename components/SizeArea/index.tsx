@@ -10,24 +10,25 @@ export const SizeArea = (props: SizeAreaProps) => {
   const [size, setSize] = useState({ x: 5, y: 5 });
 
   const handleOnChange = (type: "X" | "Y", value: number) => {
+    // 正方形じゃないと画像が正常に出力されないので、X,Yは同じ値が入るようにひとまず変更
     switch (type) {
       case "X":
         setSize({
-          ...size,
           x: value,
+          y: value,
         });
         setCanvasSize({
-          ...size,
           x: value,
+          y: value,
         });
         break;
       case "Y":
         setSize({
-          ...size,
+          x: value,
           y: value,
         });
         setCanvasSize({
-          ...size,
+          x: value,
           y: value,
         });
         break;

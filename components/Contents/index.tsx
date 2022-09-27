@@ -11,7 +11,7 @@ const initCanvas = (x: number, y: number): Canvas => {
   for (let index_y = 0; index_y < y; index_y++) {
     let canvasRow = [];
     for (let index_x = 0; index_x < x; index_x++) {
-      canvasRow.push({ color: "#FFFFFF" });
+      canvasRow.push({ color: "#FFFFFFFF" });
     }
     canvas.push(canvasRow);
   }
