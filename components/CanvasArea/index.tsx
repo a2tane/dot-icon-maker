@@ -60,8 +60,12 @@ export const CanvasArea = (props: CanvasAreaProps) => {
 
 CanvasArea.defaultProps = {
   selectedColor: "#FFFFFFFF",
-  canvasSize: {
-    x: 5,
-    y: 5,
+  canvas: {
+    cells: [
+      [{ color: "" }, { color: "" }, { color: "" }],
+      [{ color: "" }, { color: "" }, { color: "" }],
+      [{ color: "" }, { color: "" }, { color: "" }],
+    ],
   },
+  setCanvas: () => {},
 };
